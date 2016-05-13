@@ -32,7 +32,7 @@ RUN \
   sed -i '41,44d' libgc/os_dep.c && \
   sed -i '17,19d' mono/mini/exceptions-arm.c && \
   sh ./autogen.sh \
-  --prefix=/usr && \
+  --prefix=/usr --enable-minimal=aot,profiler && \
   cd /tmp/mono-*/tools/locale-builder && \
   make minimal MINIMAL_LOCALES=en_US && \
   make install-culture-table && \
