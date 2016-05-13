@@ -38,7 +38,7 @@ RUN \
 
 && \
   # remove debugging symbols from our newly built libs
-  strip -d /usr/lib/*.so* \
+  strip -d /usr/lib/*.so* || true \
 
 && \
   # clean it all up
