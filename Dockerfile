@@ -33,7 +33,7 @@ RUN \
   sed -i '17,19d' mono/mini/exceptions-arm.c && \
   sh ./autogen.sh \
     --prefix=/usr && \
-  make && \
+  make -j6 && \
   make install \
 
 && \
