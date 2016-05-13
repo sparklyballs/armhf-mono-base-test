@@ -37,7 +37,6 @@ RUN \
   --enable-parallel-mark \
   --with-profile2=no \
   --with-profile3.5=no \
-  --with-profile4=no \
   --with-mcs-docs=no \
   --enable-minimal=aot,profiler && \
   make CFLAGS=-Os && \
