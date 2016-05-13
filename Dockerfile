@@ -32,11 +32,14 @@ RUN \
   sed -i '41,44d' libgc/os_dep.c && \
   sed -i '17,19d' mono/mini/exceptions-arm.c && \
   sh ./autogen.sh \
-  --prefix=/usr --enable-minimal=aot,profiler && \
-  cd /tmp/mono-*/tools/locale-builder && \
-  make minimal MINIMAL_LOCALES=en_US && \
-  make install-culture-table && \
-  cd /tmp/mono-* && \
+  --prefix=/usr \
+  --disable-boehm \
+  --enable-parallel-mark \
+  --with-profile2=no \
+  --with-profile3.5=no \
+  --with-profile4=no \
+  --with-mcs-docs=no \
+  --enable-minimal=aot,profiler && \
   make CFLAGS=-Os && \
   make install \
 
@@ -59,8 +62,5 @@ RUN \
   rm -rf /var/cache/apk/* \
     /usr/include \
     /usr/share/man \
-    /tmp/* \
-   /usr/lib/mono/2.0-api \
-   /usr/lib/mono/3.5-api \
-   /usr/lib/mono/4.0-api
+    /tmp/*
 
