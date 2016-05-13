@@ -32,14 +32,18 @@ RUN \
   sed -i '41,44d' libgc/os_dep.c && \
   sed -i '17,19d' mono/mini/exceptions-arm.c && \
   sh ./autogen.sh \
-    --prefix=/usr && \
-  make -j6 && \
+  --prefix=/usr && \
+  cd /tmp/mono-*/tools/locale-builder && \
+  make minimal MINIMAL_LOCALES=en_US && \
+  make install-culture-table && \
+  cd /tmp/mono-*
+  make CFLAGS=-Os && \
   make install \
 
 && \
   # remove debugging symbols from our newly built libs
-  strip -d /usr/lib/*.so* || true \
-
+  strip -d /usr/lib/*.so* || true && \
+  strip /usr/bin/mono \
 && \
   # clean it all up
   apk del --purge \
