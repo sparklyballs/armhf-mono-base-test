@@ -36,7 +36,7 @@ RUN \
   cd /tmp/mono-*/tools/locale-builder && \
   make minimal MINIMAL_LOCALES=en_US && \
   make install-culture-table && \
-  cd /tmp/mono-*
+  cd /tmp/mono-* && \
   make CFLAGS=-Os && \
   make install \
 
