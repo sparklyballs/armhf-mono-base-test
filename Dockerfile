@@ -55,6 +55,8 @@ RUN \
   rm -rf /var/cache/apk/* \
     /usr/include \
     /usr/share/man \
-    /tmp/*
-
+    /tmp/* \
+   /usr/lib/mono/2.0-api \
+   /usr/lib/mono/3.5-api \
+   /usr/lib/mono/4.0-api
 
