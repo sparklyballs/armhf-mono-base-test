@@ -33,14 +33,16 @@ RUN \
   sed -i '17,19d' mono/mini/exceptions-arm.c && \
   sh ./autogen.sh \
   --prefix=/usr \
+  --sysconfdir=/etc \
+  --mandir=/usr/share/man \
+  --infodir=/usr/share/info \
+  --localstatedir=/var \
   --disable-boehm \
   --enable-parallel-mark \
-  --with-profile2=no \
-  --with-profile3.5=no \
   --with-mcs-docs=no \
-  --enable-minimal=aot,profiler && \
-  make CFLAGS=-Os && \
-  make install \
+  --without-sigaltstack \
+&&  make CFLAGS=-Os \
+&&  make install \
 
 && \
   # remove debugging symbols from our newly built libs
